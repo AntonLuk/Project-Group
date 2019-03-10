@@ -8,7 +8,7 @@ use App\Bet;
 class BetsController extends Controller
 {
     public function index(){
-        $bets=Bet::with(['races','clients','list_of_participants'])->get();
+        $bets=Bet::with(['client','list_of_participant'])->get();
         return($bets);
     }
     public function add(Request $request){

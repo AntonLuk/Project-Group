@@ -8,10 +8,14 @@ use App\Horse;
 
 class ListOfParticipant extends Model
 {
-    public function races(){
-        return $this->hasMany(Race::class);
+    public function race(){
+        return $this->belongsTo('App\Race', 'race_id');
     }
-    public function horses(){
-        return $this->hasMany(Horse::class);
+    public function horse(){
+        return $this->belongsTo('App\Horse', 'horse_id');
+    }
+
+    public function bets(){
+        return $this->hasMany('App\Bet', 'list_of_participants_id');
     }
 }

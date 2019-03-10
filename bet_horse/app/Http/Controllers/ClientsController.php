@@ -29,7 +29,7 @@ class ClientsController extends Controller
         $client->fio=$request->fio;
         $client->phone=$request->phone;
         $client->passport=$request->passport;
-        $client->save;
+        $client->save();
         return($client);
     }
 }

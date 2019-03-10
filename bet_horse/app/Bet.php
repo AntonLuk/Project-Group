@@ -9,13 +9,11 @@ use App\Client;
 
 class Bet extends Model
 {
-    public function races(){
-        return $this->hasMany(Race::class);
+    public function client(){
+        return $this->belongsTo('App\Client', 'client_id');
     }
-    public function clients(){
-        return $this->hasMany(Client::class);
-    }
-    public function list_of_participants(){
-        return $this->hasMany(ListOfParticipant::class);
+
+    public function list_of_participant(){
+        return $this->belongsTo('App\ListOfParticipant', 'list_of_participants_id');
     }
 }

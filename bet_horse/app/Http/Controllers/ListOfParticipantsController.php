@@ -7,7 +7,7 @@ use App\ListOfParticipant;
 class ListOfParticipantsController extends Controller
 {
     public function index(){
-        $lists=ListOfParticipant::with(['horses','races'])->get();
+        $lists=ListOfParticipant::with(['horse','race'])->get();
         return($lists);
     }
     public function add(Request $request){
