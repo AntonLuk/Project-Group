@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+return File::get(public_path() . '/html/index.html');
 });
 
 Route::group(['prefix' => 'horses'], function () {
