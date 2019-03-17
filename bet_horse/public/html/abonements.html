@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Управление абонементами</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="flex-header">
+        <span class="header">Управление абонементами</span>
+        <ul class="menu flex-header">
+            <li><a href="../">Главная</a></li>
+            <li><a href="/clients">Клиенты</a></li>
+            <li><a href="/abonements">Абонементы</a></li>
+            <li><a href="/abonementtypes">Типы абонементов</a></li>
+            <li><a href="/staff">Сотрудники</a></li>
+        </ul>
+    </header>
+    <main>
+        <div class="clients-container">
+            <div class="search-container">
+                <h2 class="form-header">Все абонементы</h2>
+                <div class="search-form">
+                    <label for="search" class="search-text">
+                        Искать
+                    </label>
+                    <input id="search" type="text">
+                </div>
+            </div>
+            <label id="add">Добавить</label>
+            <table class="client-list">
+                <tr>
+                    <th>№</th>
+                    <th>Название</th>
+                    <th>Количество</th>
+                    <th>Тип</th>
+                    <th>Цена</th>
+                </tr>
+            </table>
+            <form name="edit" class="edit-entry hide">
+                <label for="name">Название</label><br>
+                <input type="text" id="name"><br>
+
+                <label for="amount">Количество</label><br>
+                <input type="number" name="amount"><br>
+
+                <label for="type">Тип</label><br>
+                <select id="type">
+                </select><br>
+
+                <label for="cost">Цена</label><br>
+                <input id="cost" type="number"><br>
+
+                <div class="edit-control">
+                </div>
+            </form>
+            <form name="add" class="add-entry hide">
+                <label for="name">Название</label><br>
+                <input type="text" id="name"><br>
+
+                <label for="amount">Количество</label><br>
+                <input type="number" name="amount"><br>
+
+                <label for="type">Тип</label><br>
+                <select id="type">
+                </select><br>
+
+                <label for="cost">Цена</label><br>
+                <input id="cost" type="number"><br>
+
+                <div class="add-control">
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="utils.js"></script>
+    <script src="getMainDataAbonements.js"></script>
+</body>
+
+</html>

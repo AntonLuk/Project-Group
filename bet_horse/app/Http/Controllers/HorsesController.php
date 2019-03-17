@@ -25,7 +25,7 @@ class HorsesController extends Controller
     public function update(Request $request){
         $horse=Horse::find($request->id);
         $horse->name=$request->name;
-        $horse->save;
+        $horse->save();
         return($horse);
     }
 

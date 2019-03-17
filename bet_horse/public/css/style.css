@@ -1,28 +1,219 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
 
 body {
-	padding: 0;
-	margin: 0;
-	font-family: 'Montserrat Alternates', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+header {
+    background-color: #000000;
+    color: white;
+    position: relative;
 }
 
 .header {
-	background-color: #000000;
-	color: white;
-	display: flex;
-	justify-content: space-around;
+    font-size: 40px;
+    margin-left: 5%;
+    z-index: 100;
 }
 
 .menu {
-	padding: 0;
-	list-style-type: none;
-	float: right;
-	font-size: 1.5em;
-	display: flex;
-	justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    list-style-type: none;
+    font-size: 25px;
 }
 
 .menu li {
-	padding-right: 10%;
-	cursor: pointer;
+    color: white;
+    margin-right: 7%;
+    cursor: pointer;
+    transition: all 1s ease-in-out;
+    position: relative;
+}
+
+.menu > li::after, .menu > li::before {
+    display: block;
+    content: "";
+    background-color: #ffffff;
+    height: 2px;
+    transform: scale(0) rotate(360deg);
+    transition: all 0.2s ease-in-out;
+}
+
+.menu li:hover::after, .menu li:hover::before {
+    transform: scale(1) rotate(0);
+}
+
+.flex-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/* CLIENTS FORM */
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-container input {
+    height: 20px;
+}
+
+.search-text {
+    font-size: 25px;
+    margin-right: 2%;
+}
+
+.client-list, #chart {
+    font-size: 20px;
+    border-collapse: collapse;
+    margin-top: 5%;
+    width: 1200px;
+}
+
+td, th {
+    border: 2px solid grey;
+    padding: 10px 20px 10px 20px;
+    cursor: pointer;
+}
+
+.client-list tr:nth-child(even) {
+    background-color: rgba(201, 210, 218, 0.384);
+}
+
+.client-list tr:nth-child(odd) {
+    background-color: rgba(176, 185, 192, 0.384);
+}
+
+.client-list tr:nth-child(1) {
+    background-color: rgb(152, 163, 173);
+}
+
+.client-list tr:hover {
+    background-color: rgb(152, 163, 173);
+}
+
+.client-list tr {
+    max-width: 960px;
+}
+
+.edit-entry {
+    font-size: 20px;
+}
+
+.add-control, .edit-control {
+    margin-top: 10%;
+}
+
+.add-control label, .edit-control label {
+    border: 2px solid grey;
+    background-color: black;
+    padding: 2% 5%;
+    margin-right: 10%;
+    color: white;
+    cursor: pointer;
+}
+
+.control label:first-child {
+    margin-right: 10%;
+}
+
+.can {
+    background-image: url(delete.png);
+}
+
+.print {
+    background-image: url(print.png);
+}
+
+.addCert {
+    background-image: url(add.png);
+}
+
+.button {
+    background-color: white;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.hide {
+    display: none;
+}
+
+.error {
+    border: 2px solid red;
+}
+
+.error::after {
+    content: "Проверьте введеные данные";
+}
+
+a:visited {
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+#add {
+    border-radius: 10px 10px;
+    background-color: dimgray;
+    color: white;
+    border: 2px solid grey;
+    font-size: 20px;
+    padding: 1%;
+}
+
+.popupError {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 20px;
+    right: 20px;
+    width: 25%;
+    height: 100px;
+    font-size: 25px;
+    background-color: red;
+    color: white;
+    border: 2px solid black;
+    opacity: 0.9;
+}
+
+.submenu {
+    width: 150px;
+    list-style-type: none;
+    display: none;
+    position: absolute;
+    top: 100;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: white;
+    font-size: 17px;
+    transition: all 1s ease-in-out;
+}
+
+.submenu > li {
+    border-bottom: 1px solid white;
+}
+
+.menu > li:hover .submenu {
+    display: block;
 }
