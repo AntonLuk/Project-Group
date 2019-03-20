@@ -18,7 +18,7 @@
         <main>
             <div class="clients-container">
                 <div class="search-container">
-                    <h2 class="form-header">Все кони</h2>
+                    <h2 class="form-header">Все ставки</h2>
                     <div class="search-form">
                         <label for="search" class="search-text">
                             Искать
@@ -30,19 +30,44 @@
                 <table class="client-list">
                     <tr>
                         <th>№</th>
-                        <th>Имя</th>
+                        <th>Сумма</th>
+                        <th>Выигрыш</th>
+                        <th>Клиент</th>
+                        <th>Ставка</th>
                     </tr>
                 </table>
                 <form name="edit" class="edit-entry hide">
-                    <label for="name">Имя</label><br>
-                    <input id="name" type="text"><br>  
+                    <label for="summ">Сумма</label><br>
+                    <input type="number" id="summ">
+
+                    <label for="prize">Выигрыш</label><br>
+                    <input type="number" id="prize">
+
+                    <label for="client">Клиент</label><br>
+                    <select id="client">
+                    </select><br>  
+
+                    <label for="list_of_participants">Ставка</label><br>
+                    <select id="list_of_participants">
+                    </select><br>  
 
                     <div class="edit-control">
                     </div>
                 </form>
                 <form name="add" class="add-entry hide">
-                    <label for="name">Имя</label><br>
-                    <input id="name" type="text"><br>  
+                    <label for="summ">Сумма</label><br>
+                    <input type="number" id="summ">
+
+                    <label for="prize">Выигрыш</label><br>
+                    <input type="number" id="prize">
+
+                    <label for="client">Клиент</label><br>
+                    <select id="client">
+                    </select><br>  
+
+                    <label for="list_of_participants">Ставка</label><br>
+                    <select id="list_of_participants">
+                    </select><br>  
                     
                     <div class="add-control">
                     </div>
@@ -51,7 +76,7 @@
         </main>
         <footer></footer>
         <script src="/js/utils.js"></script>
-        <script src="/js/getMainData.js">
+        <script src="/js/getMainDataBets.js">
         </script>
     </body>
 </html>

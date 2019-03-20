@@ -12,7 +12,23 @@
 */
 
 Route::get('/', function () {
-return File::get(public_path() . '/html/index.html');
+    return File::get(public_path() . '/html/index.html');
+});
+
+Route::get('/clients', function () {
+    return File::get(public_path() . '/html/clients.html');
+});
+
+Route::get('/races', function () {
+    return File::get(public_path() . '/html/races.html');
+});
+
+Route::get('/bets', function () {
+    return File::get(public_path() . '/html/bets.html');
+});
+
+Route::get('/list_of_participants', function () {
+    return File::get(public_path() . '/html/list_of_participants.html');
 });
 
 Route::group(['prefix' => 'horses'], function () {

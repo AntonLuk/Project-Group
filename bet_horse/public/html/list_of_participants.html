@@ -18,7 +18,7 @@
         <main>
             <div class="clients-container">
                 <div class="search-container">
-                    <h2 class="form-header">Все кони</h2>
+                    <h2 class="form-header">Все списки</h2>
                     <div class="search-form">
                         <label for="search" class="search-text">
                             Искать
@@ -30,19 +30,30 @@
                 <table class="client-list">
                     <tr>
                         <th>№</th>
-                        <th>Имя</th>
+                        <th>Номер заезда</th>
+                        <th>Лошадь</th>
                     </tr>
                 </table>
                 <form name="edit" class="edit-entry hide">
-                    <label for="name">Имя</label><br>
-                    <input id="name" type="text"><br>  
+                    <label for="race">Номер заезда</label><br>
+                    <select id="race">
+                    </select><br>  
+
+                    <label for="horse">Лошадь</label><br>
+                    <select id="horse">
+                    </select><br>  
 
                     <div class="edit-control">
                     </div>
                 </form>
                 <form name="add" class="add-entry hide">
-                    <label for="name">Имя</label><br>
-                    <input id="name" type="text"><br>  
+                    <label for="race">Номер заезда</label><br>
+                    <select id="race">
+                    </select><br>  
+
+                    <label for="horse">Лошадь</label><br>
+                    <select id="horse">
+                    </select><br>  
                     
                     <div class="add-control">
                     </div>
@@ -51,7 +62,7 @@
         </main>
         <footer></footer>
         <script src="/js/utils.js"></script>
-        <script src="/js/getMainData.js">
+        <script src="/js/getMainDataLists.js">
         </script>
     </body>
 </html>

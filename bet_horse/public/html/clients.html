@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Управление абонементами</title>
-        <link rel="stylesheet" href="style.css">
+        <title>Управление конями</title>
+        <link rel="stylesheet" href="/css/style.css">
     </head>
     <body>
         <header class="flex-header">
-            <span class="header">Управление абонементами</span>
+            <span class="header">Управление конями</span>
             <ul class="menu flex-header">
-                <li><a href="../">Главная</a></li>
+                <li><a href="/">Кони</a></li>
                 <li><a href="/clients">Клиенты</a></li>
-                <li><a href="/abonements">Абонементы</a></li>
-                <li><a href="/abonementtypes">Типы абонементов</a></li>
-                <li><a href="/staff">Сотрудники</a><span></span></li>
+                <li><a href="/races">Заезды</a></li>
+                <li><a href="/bets">Ставки</a></li>
+                <li><a href="/list_of_participants">Список участников</a></li>   
             </ul>
         </header>
         <main>
@@ -30,33 +30,33 @@
                 <table class="client-list">
                     <tr>
                         <th>№</th>
-                        <th>Имя</th>
-                        <th>Фамилия</th>
-                        <th>Отчество</th>
+                        <th>ФИО</th>
+                        <th>Телефон</th>
+                        <th>Паспорт</th>
                     </tr>
                 </table>
                 <form name="edit" class="edit-entry hide">
-                    <label for="surname">Фамилия</label><br>
-                    <input type="text" id="surname"><br>
+                    <label for="fio">ФИО</label><br>
+                    <input id="fio" type="text"><br>  
 
-                    <label for="name">Имя</label><br>
-                    <input type="text" id="name"><br>
+                    <label for="phone">Телефон</label><br>
+                    <input id="phone" type="text"><br>
 
-                    <label for="otchestvo">Отчество</label><br>
-                    <input id="otchestvo" type="text"><br>  
-                    
+                     <label for="passport">Паспорт</label><br>
+                    <input id="passport" type="text"><br> 
+
                     <div class="edit-control">
                     </div>
                 </form>
                 <form name="add" class="add-entry hide">
-                    <label for="surname">Фамилия</label><br>
-                    <input type="text" id="surname"><br>
+                    <label for="fio">ФИО</label><br>
+                    <input id="fio" type="text"><br>  
 
-                    <label for="name">Имя</label><br>
-                    <input type="text" id="name"><br>
+                    <label for="phone">Телефон</label><br>
+                    <input id="phone" type="text"><br>
 
-                    <label for="otchestvo">Отчество</label><br>
-                    <input id="otchestvo" type="text"><br>  
+                     <label for="passport">Паспорт</label><br>
+                    <input id="passport" type="text"><br> 
                     
                     <div class="add-control">
                     </div>
@@ -64,8 +64,8 @@
             </div>
         </main>
         <footer></footer>
-        <script src="utils.js"></script>
-        <script src="getMainDataClients.js">
+        <script src="/js/utils.js"></script>
+        <script src="/js/getMainDataClients.js">
         </script>
     </body>
 </html>
