@@ -217,3 +217,7 @@ a {
 .menu > li:hover .submenu {
     display: block;
 }
+
+.hidden {
+   display: none !important;
+}

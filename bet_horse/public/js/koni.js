@@ -1,21 +1,34 @@
+$(document).ready(function() {
 
-let links = document.querySelectorAll('.menu li');
-links.forEach(link => {
-	link.addEventListener('click', getData);
+	let
+		loginLink = $('.menu .login'),
+		logoutLink = $('.menu .logout');
+		registerLink = $('.menu .register');
+
+	if (localStorage.token) {
+
+		loginLink.addClass('hidden');
+		registerLink.addClass('hidden');
+		logoutLink.removeClass('hidden');
+
+	} else {
+
+		loginLink.removeClass('hidden');
+		registerLink.removeClass('hidden');
+		logoutLink.addClass('hidden');
+
+	}
+
+	loginLink.on('click', function(event) {
+
+		window.location.replace("./loginForm");
+
+	});
+
+	logoutLink.on('click', function(event) {
+
+		localStorage.removeItem('token');
+		window.location.replace('./loginForm');
+
+	});
 });
-
-function getData(e) {
-	let connectionString = '';
-	if(this.innerText == 'Кони') connectionString = '/horses/index';
-	else if(this.innerText == 'Люди') connectionString = '/clients/index';
-	else if(this.innerText == 'Ставки') connectionString = '/bets/index';
-
-	axios.get(connectionString)
-  	.then(function (response) {
-  		console.log(response.data);
-  	})
-  	.catch(function (error) {
-    	console.log(error);
-  	});
-}
-

@@ -12,8 +12,18 @@
 */
 
 Route::get('/', function () {
-return File::get(public_path() . '/html/index.html');
+   // return redirect('./html/index.html');
+   return File::get(public_path() . '/html/index.html');
 });
+Route::get('/loginForm', function () {
+   return File::get(public_path() . '/html/loginForm.html');
+});
+Route::get('/registerForm', function () {
+   return File::get(public_path() . '/html/registerForm.html');
+});
+
+Route::get('/login', 'AuthorizationController@login')->name('authorization.login');
+Route::post('/register', 'AuthorizationController@register')->name('authorization.register');
 
 Route::group(['prefix' => 'horses'], function () {
   Route::post('/add','HorsesController@add')->name('horses.add');

@@ -12,7 +12,10 @@
                 <li><a href="/clients">Клиенты</a></li>
                 <li><a href="/abonements">Заезды</a></li>
                 <li><a href="/abonementtypes">Ставки</a></li>
-                <li><a href="/staff">Список участников</a></li>   
+                <li><a href="/staff">Список участников</a></li>
+                <li class="login"><a href="/loginForm">Войти</a></li>
+                <li class="logout"><a href="/loginForm">Выйти</a></li>
+                <li class="register"><a href="/registerForm">Регистрация</a></li>
             </ul>
         </header>
         <main>
@@ -35,23 +38,24 @@
                 </table>
                 <form name="edit" class="edit-entry hide">
                     <label for="name">Имя</label><br>
-                    <input id="name" type="text"><br>  
+                    <input id="name" type="text"><br>
 
                     <div class="edit-control">
                     </div>
                 </form>
                 <form name="add" class="add-entry hide">
                     <label for="name">Имя</label><br>
-                    <input id="name" type="text"><br>  
-                    
+                    <input id="name" type="text"><br>
+
                     <div class="add-control">
                     </div>
                 </form>
             </div>
         </main>
         <footer></footer>
+        <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="/js/utils.js"></script>
-        <script src="/js/getMainData.js">
-        </script>
+        <script src="/js/getMainData.js"></script>
+        <script src="/js/koni.js" charset="utf-8"></script>
     </body>
 </html>
