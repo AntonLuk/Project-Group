@@ -15,6 +15,12 @@ function cleanObject(obj, props) {
     return obj;
 }
 
+function getSelectData(connectionString) {
+    return fetch(connectionString).then(responce => {
+        return responce.json();
+    });
+}
+
 function hideTable() {
     let table = document.querySelector('table');
     let clientsContainer = document.querySelector('.search-container');
@@ -64,6 +70,7 @@ function addDelete(conString) {
     let can = document.createElement('td');
     can.classList.add('can');
     can.classList.add('button');
+    can.innerText = 'Удалить';
     can.addEventListener('click', function (e) {
         fetch(conString).then(res => {
                 if (res.status == 500) showError();
@@ -144,3 +151,69 @@ class Horse {
         this.Name = Name;
     }
 }
+
+class Client {
+    constructor(IDClient, Fio, Phone, Passport) {
+        this.IDClient = IDClient;
+        this.Fio = Fio;
+        this.Phone = Phone;
+        this.Passport = Passport;
+    }
+
+    edit(Fio, Phone, Passport) {
+        this.Fio = Fio;
+        this.Phone = Phone;
+        this.Passport = Passport;
+    }
+}
+
+class Race {
+    constructor(IDRace, Name, HorseID) {
+        this.IDRace = IDRace;
+        this.Name = Name;
+        this.HorseID = HorseID;
+    }
+
+    edit(Name, HorseID) {
+        this.Name = Name;
+        this.HorseID = HorseID;
+    }
+}
+
+class Bet {
+    constructor(IDBet, Summ, Prize, Fio, ClientID, Name, HorseID) {
+        this.IDBet = IDBet;
+        this.Summ = Summ;
+        this.Prize = Prize;
+        this.Fio = Fio;
+        this.ClientID = ClientID;
+        this.Name = Name;
+        this.HorseID = HorseID;
+    }
+
+    edit(Name, HorseID) {
+        this.Summ = Summ;
+        this.Prize = Prize;
+        this.Fio = Fio;
+        this.ClientID = ClientID;
+        this.Name = Name;
+        this.HorseID = HorseID;
+    }
+}
+
+
+class List {
+    constructor(IDList, RaceID, Name, HorseID) {
+        this.IDList = IDList;
+        this.RaceID = RaceID;
+        this.Name = Name;
+        this.HorseID = HorseID;
+    }
+
+    edit(RaceID, Name, HorseID) {
+        this.RaceID = RaceID;
+        this.Name = Name;
+        this.HorseID = HorseID;
+    }
+}
+
