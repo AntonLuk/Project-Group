@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ListOfParticipant;
+use App\Horse;
+
 class ListOfParticipantsController extends Controller
 {
     public function index(){
@@ -28,5 +30,10 @@ class ListOfParticipantsController extends Controller
         $list=ListOfParticipant::find($id);
         $list->delete();
         return($this->index());
+    }
+
+    public function horses($id){
+        $lists = ListOfParticipant::where('race_id', $id)->with(['horse'])->get();
+        return($lists);
     }
 }

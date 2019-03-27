@@ -13,13 +13,13 @@
                 <li><a href="/list_of_participants">Список участников</a></li>
                 <li class="login"><a href="/loginForm">Войти</a></li>
                 <li class="logout"><a href="/loginForm">Выйти</a></li>
-                <li class="register"><a href="/registerForm">Регистрация</a></li>
+                <li class="register"><a href="/registerForm">Регистрация</a></li>   
             </ul>
         </header>
         <main>
             <div class="clients-container">
                 <div class="search-container">
-                    <h2 class="form-header">Все кони</h2>
+                    <h2 class="form-header">Все заезды</h2>
                     <div class="search-form">
                         <label for="search" class="search-text">
                             Искать
@@ -31,20 +31,22 @@
                 <table class="client-list">
                     <tr>
                         <th>№</th>
-                        <th>Имя</th>
+                        <th>Победившая лошадь</th>
                     </tr>
                 </table>
                 <form name="edit" class="edit-entry hide">
-                    <label for="name">Имя</label><br>
-                    <input id="name" type="text"><br>
+                    <label for="horse">Лошадь</label><br>
+                    <select id="horse">
+                    </select><br>  
 
                     <div class="edit-control">
                     </div>
                 </form>
                 <form name="add" class="add-entry hide">
-                    <label for="name">Имя</label><br>
-                    <input id="name" type="text"><br>
-
+                    <label for="horse">Лошадь</label><br>
+                    <select id="horse">
+                    </select><br>  
+                    
                     <div class="add-control">
                     </div>
                 </form>
@@ -53,7 +55,9 @@
         <footer></footer>
         <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="/js/utils.js"></script>
-        <script src="/js/getMainData.js"></script>
+        <script src="/js/getMainDataRaces.js"></script>
         <script src="/js/koni.js" charset="utf-8"></script>
+
+        </script>
     </body>
 </html>

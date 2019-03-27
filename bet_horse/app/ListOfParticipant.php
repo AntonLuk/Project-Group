@@ -11,6 +11,7 @@ class ListOfParticipant extends Model
     public function race(){
         return $this->belongsTo('App\Race', 'race_id');
     }
+    
     public function horse(){
         return $this->belongsTo('App\Horse', 'horse_id');
     }

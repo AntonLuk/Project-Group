@@ -8,9 +8,7 @@
         <header class="flex-header">
             <span class="header">Управление конями</span>
             <ul class="menu flex-header">
-                <li><a href="/">Кони</a></li>
-                <li><a href="/races">Заезды</a></li>
-                <li><a href="/list_of_participants">Список участников</a></li>
+                <li><a href="/bets">Ставки</a></li>
                 <li class="login"><a href="/loginForm">Войти</a></li>
                 <li class="logout"><a href="/loginForm">Выйти</a></li>
                 <li class="register"><a href="/registerForm">Регистрация</a></li>
@@ -19,7 +17,7 @@
         <main>
             <div class="clients-container">
                 <div class="search-container">
-                    <h2 class="form-header">Все кони</h2>
+                    <h2 class="form-header">Все ставки</h2>
                     <div class="search-form">
                         <label for="search" class="search-text">
                             Искать
@@ -27,24 +25,42 @@
                         <input id="search" type="text">
                     </div>
                 </div>
-                <label id="add">Добавить</label>
                 <table class="client-list">
                     <tr>
-                        <th>№</th>
-                        <th>Имя</th>
+                        <th>№ заезда</th>
+                        <th>Пбедитель</th>
+                        <th>Ставка</th>
+                        <th>Сумма</th>
+                        <th>Выигрыш</th>
                     </tr>
                 </table>
                 <form name="edit" class="edit-entry hide">
-                    <label for="name">Имя</label><br>
-                    <input id="name" type="text"><br>
+                    <label for="horse">Конь</label><br>
+                    <select id="horse">
+                    </select><br>
+
+                    <label for="summ">Сумма</label><br>
+                    <input type="number" id="summ"> 
 
                     <div class="edit-control">
                     </div>
                 </form>
                 <form name="add" class="add-entry hide">
-                    <label for="name">Имя</label><br>
-                    <input id="name" type="text"><br>
+                    <label for="race">Заезд</label><br>
+                    <select id="race">
+                    </select><br>
 
+                    <label for="horse">Конь</label><br>
+                    <select id="horse">
+                    </select><br>
+
+                    <label for="client">Клиент</label><br>
+                    <select id="client">
+                    </select><br>  
+
+                    <label for="summ">Сумма</label><br>
+                    <input type="number" id="summ">
+                    
                     <div class="add-control">
                     </div>
                 </form>
@@ -53,7 +69,8 @@
         <footer></footer>
         <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
         <script src="/js/utils.js"></script>
-        <script src="/js/getMainData.js"></script>
+        <script src="/js/getMainDataBets.js"></script>
         <script src="/js/koni.js" charset="utf-8"></script>
+        </script>
     </body>
 </html>
