@@ -3,7 +3,7 @@ $(document).ready(function() {
    $('.submit').on('click', event => {
 
       let
-         login = $('input[name=login]').val(),
+         email = $('input[name=email]').val(),
          name = $('input[name=name]').val(),
          password = $('input[name=password]').val(),
          passwordRepeat = $('input[name=passwordRepeat]').val();
@@ -12,7 +12,7 @@ $(document).ready(function() {
 
             axios.post('/register', {
                name: name,
-               email: login,
+               email: email,
                password: password,
                isAdmin: 0
             })

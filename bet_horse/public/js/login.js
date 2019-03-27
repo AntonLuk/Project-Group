@@ -9,23 +9,24 @@ $(document).ready(function() {
 
    $('.submit').on('click', event => {
       let
-         login = $('input[name=login]').val(),
+         email = $('input[name=email]').val(),
          password = $('input[name=password]').val(),
          token = null;
 
       axios.get('login', {
         params: {
-          email: login,
+          email: email,
           password: password
         }
       })
       .then(response => {
+        console.log(response.data.isAdmin);
         token = response.data.token ? response.data.token : null;
 
         if (token) {
 
            localStorage.setItem('token', token);
-           window.location.replace('./');
+           if(response.data.isAdmin == 0) window.location.replace('./bets');
 
         } else {
 

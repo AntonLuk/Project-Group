@@ -11,11 +11,11 @@ class AuthorizationController extends Controller
    public function login(Request $request)
    {
       $user = User::where('email', $request->email)->first();
-      $login = $request->login;
+      $login = $request->email;
 
       if(!$user) {
           return [
-            'error' => 'Неверный email!',
+            'error' => 'Неверный логин!',
           ];
       }
 
@@ -32,6 +32,7 @@ class AuthorizationController extends Controller
 
       return [
         'token' => $token,
+        'isAdmin' => $user->isAdmin,
       ];
    }
 

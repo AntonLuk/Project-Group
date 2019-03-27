@@ -8,6 +8,15 @@ function getMainData(conString) {
         });
 }
 
+function getMainDataBets(conString) {
+    conData = conString;
+    fetch(conData)
+        .then(responce => responce.json())
+        .then((data) => {
+            fillTable(data);
+        });
+}
+
 function cleanObject(obj, props) {
     props.forEach(prop => {
         delete obj[prop];
@@ -47,6 +56,7 @@ function clearTable() {
 
 function clearOptions() {
     let options = document.querySelectorAll('option');
+    console.log(options);
     if (!options) return;
     for (let i = 1; i < options.length; i++) {
         options[i].parentElement.removeChild(options[i]);
@@ -79,6 +89,22 @@ function addDelete(conString) {
     });
     return can;
 }
+
+function addRandom(id) {
+    let random = document.createElement('td');
+    random.classList.add('can');
+    random.classList.add('button');
+    random.innerText = 'Определить победителя';
+    random.addEventListener('click', function (e) {
+        fetch(`/races/generate/${id}`).then(res => {
+                console.log(res.json())
+                if (res.status == 500) showError();
+                else update();
+            });
+    });
+    return random;
+}
+
 
 let search = document.getElementById('search');
 if (search) {
@@ -132,7 +158,7 @@ function showError() {
     let error = document.createElement('div');
     error.classList.add('popupError');
     let errorText = document.createElement('div');
-    errorText.innerText = 'Невозможно удалить этот элемент!';
+    errorText.innerText = 'Ошибка!';
     let body = document.querySelector('body');
     error.appendChild(errorText);
     body.appendChild(error);

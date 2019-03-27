@@ -1,16 +1,29 @@
-getMainData('/bets/index');
+getMainDataBets(`/bets/getbets/${localStorage.token}`);
 
 
 let bets = [];
 
 function fillTable(data) {
     bets = [];
-    console.log(data);
-    data.map(entry => {
-        let obj = new Bet(entry.id, entry.horse.name, entry.horse_id);
-        entry.name = entry.horse.name;
+    data.races.map(entry => {
+        if(entry.horse) entry.name = entry.horse.name;
+        else entry.name = null;
+        entry.bet = 'Нет';
+        entry.summ = 0;
+        entry.prize = 0;
+        data.bets.forEach(bet => {
+            data.horses.forEach(horse => {
+                if(bet.list_of_participant.race_id == entry.id 
+                    && horse.id == bet.list_of_participant.horse_id) entry.bet = horse.name;
+            });
+            if(bet.list_of_participant.race_id == entry.id) entry.summ = bet.summ;
+            if(bet.list_of_participant.race_id == entry.id && bet.prize) 
+            {
+                console.log(bet.list_of_participant.race_id, entry.id);
+                entry.prize = bet.prize;
+            }
+       });
         entry = cleanObject(entry, ['created_at', 'updated_at', 'horse', 'horse_id']);
-        bets.push(obj);
         let table = document.querySelector('table');
         let row = document.createElement('tr');
         for (key in entry) {
@@ -22,50 +35,47 @@ function fillTable(data) {
         row.addEventListener('click', function (e) {
             if (e.target.classList.contains('can')) return;
             let row = e.target.parentElement;
-            fillEditForm(row);
+            fillAddForm(row);
         });
 
-        let can = addDelete(`/bets/destroy/${entry.id}`);
-        row.appendChild(can);
         table.appendChild(row);
     });
 }
 
-
-
-function fillEditForm(row) {
+function fillAddForm(row) {
     hideTable();
     let editform = document.forms.edit;
     editform.classList.remove('hide');
     let horse = editform.elements.horse;
-    let entry = bets.filter(elem => {
-        if (elem.IDRace == row.cells[0].innerText) return true;
-        return false;
-    })[0];
-    let id = entry.IDRace;
-    getSelectData('/horses/index').then(data => fillHorses(data, horse, entry));
+    let summ = editform.elements.summ;
+    let id = row.cells[0].innerText;
+
+    getSelectData(`/list_of_participants/horses/${id}`).then(data => fillHorses(data, horse));
+
     let editControls = document.querySelector('.edit-control');
     let apply = document.createElement('label');
     let cancel = document.createElement('label');
 
     apply.innerText = 'Применить';
     cancel.innerText = 'Отмена';
-    addEditListeners(id, apply, cancel);
+    addAddListeners(row, apply, cancel);
     editControls.appendChild(apply);
     editControls.appendChild(cancel);
 }
 
-function addEditListeners(id, apply, cancel) {
+function addAddListeners(row, apply, cancel) {
     let listener = function (e) {
         let editform = document.forms.edit;
         let horse = editform.elements.horse;
+        let summ = editform.elements.summ;
+        let id = row.cells[0].innerText;
 
-        fetch('/bets/update', {
+        fetch('/bets/add', {
             method: 'post',
             headers: {
                 "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             },
-            body: `horse_id=${horse.value}&id=${id}`
+            body: `list_id=${horse.value}&summ=${summ.value}&token=${localStorage.token}`
         })
             .then(res => {
                 update();
@@ -83,55 +93,12 @@ function addEditListeners(id, apply, cancel) {
     cancel.addEventListener('click', listener, false);
 }
 
-let add = document.getElementById('add');
-add.addEventListener('click', (e) => {
-    hideTable();
-    let addform = document.forms.add;
-    addform.classList.remove('hide');
-    let horse = addform.elements.horse;
-    getSelectData('/horses/index').then(data => fillHorses(data, horse));
-    let addControls = document.querySelector('.add-control');
-    let apply = document.createElement('label');
-    let cancel = document.createElement('label');
-    apply.innerText = 'Применить';
-    cancel.innerText = 'Отмена';
-    addAddListeners(apply, cancel);
-    addControls.appendChild(apply);
-    addControls.appendChild(cancel);
-});
-
-function addAddListeners(apply, cancel) {
-    let listener = function (e) {
-        let addform = document.forms.add;
-        let horse = addform.elements.horse;
-        console.log(horse.value);
-        fetch('/bets/add', {
-            method: 'post',
-            headers: {
-                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-            },
-            body: `horse_id=${horse.value}`
-        })
-            .then(res => {
-                update();
-                apply.parentElement.removeChild(apply);
-                cancel.parentElement.removeChild(cancel);
-            });
-    }
-    apply.addEventListener('click', listener, false);
-    listener = (e) => {
-        update();
-        apply.parentElement.removeChild(apply);
-        cancel.parentElement.removeChild(cancel);
-    }
-    cancel.addEventListener('click', listener, false);
-}
-
 function fillHorses(data, horse, entry) {
     data.forEach(elem => {
+        console.log(elem);
         let option = document.createElement('option');
         option.value = elem.id;
-        option.innerText = elem.name;
+        option.innerText = elem.horse.name;
         if (entry && option.value == entry.horse_id) option.selected = true;
         horse.appendChild(option);
     });

@@ -33,6 +33,7 @@ Route::get('/list_of_participants', function () {
 Route::get('/loginForm', function () {
    return File::get(public_path() . '/html/loginForm.html');
 });
+
 Route::get('/registerForm', function () {
    return File::get(public_path() . '/html/registerForm.html');
 });
@@ -55,10 +56,11 @@ Route::group(['prefix' => 'clients'], function () {
 });
 
 Route::group(['prefix' => 'races'], function () {
-    Route::post('/add','RacesController@add')->name('races.add');
+    Route::get('/add','RacesController@add')->name('races.add');
     Route::get('/index','RacesController@index')->name('races.index');
     Route::get('/destroy/{id}','RacesController@destroy')->name('races.destroy');
     Route::post('/update','RacesController@update')->name('races.update');
+    Route::get('/generate/{id}','RacesController@generateWinner')->name('races.generate');
 });
 
 Route::group(['prefix' => 'bets'], function () {
@@ -66,6 +68,7 @@ Route::group(['prefix' => 'bets'], function () {
     Route::get('/index','BetsController@index')->name('bets.index');
     Route::get('/destroy/{id}','BetsController@destroy')->name('bets.destroy');
     Route::post('/update','BetsController@update')->name('bets.update');
+    Route::get('/getbets/{token}','BetsController@getbets')->name('bets.getbets');
 });
 
 Route::group(['prefix' => 'list_of_participants'], function () {
@@ -73,4 +76,5 @@ Route::group(['prefix' => 'list_of_participants'], function () {
     Route::get('/index','ListOfParticipantsController@index')->name('list_of_participants.index');
     Route::get('/destroy/{id}','ListOfParticipantsController@destroy')->name('list_of_participants.destroy');
     Route::post('/update','ListOfParticipantsController@update')->name('list_of_participants.update');
+    Route::get('/horses/{id}','ListOfParticipantsController@horses')->name('list_of_participants.horses');
 });
